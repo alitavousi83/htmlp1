@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سامانه تاکسی‌رانی | فرم ثبت سفر</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 RTL CSS -->
+    <link href="https://cdn.finca.ir/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.finca.ir/bootstrap/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f6fbff;
+            min-height: 100vh;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #004e92 0%, #4286f4 100%);
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+        .main-card {
+            max-width: 520px;
+            margin: auto;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+            margin-top: 30px;
+            margin-bottom: 24px;
+            background: #fff;
+        }
+        .section-switch {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .section-switch button {
+            min-width: 124px;
+        }
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .table-section {
+            margin-top: 12px;
+        }
+        .split-table-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .split-table-col {
+            flex: 1 1 0;
+        }
+        @media (max-width: 1200px) {
+            .split-table-row {
+                flex-direction: column;
+            }
+        }
+        @media (max-width:576px) {
+            .main-card {
+                padding: 1.3rem 0.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Unique Responsive Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm py-2">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://cdn.mftplus.ir/img/taxi1.png" width="34" height="34" alt="لوگو" class="ms-2" style="border-radius:8px;">
+                سامانه تاکسی‌رانی
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="نمایش منو">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mt-2 mt-lg-0" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">صفحه اصلی</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">پنل رانندگان</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">پنل مسافران</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">تماس با ما</a></li>
+                </ul>
+                <button class="btn btn-warning ms-lg-3 w-100 w-lg-auto mt-2 mt-lg-0 px-4 rounded-pill" style="font-weight:500;">ورود</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Card With Section Switcher -->
+    <div class="container">
+        <div class="main-card shadow-sm p-4">
+            <div class="section-switch mb-3">
+                <button id="driverBtn" class="btn btn-primary" type="button">راننده</button>
+                <button id="passengerBtn" class="btn btn-outline-primary" type="button">مسافر</button>
+            </div>
+            <!-- Driver Form -->
+            <form id="driverForm" class="form-section active">
+                <h5 class="text-center mb-3 text-primary">فرم مخصوص رانندگان</h5>
+                <div class="mb-2">
+                    <label class="form-label">نام و نام خانوادگی</label>
+                    <input type="text" class="form-control" id="d_name" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">شماره پلاک ماشین</label>
+                    <input type="text" class="form-control" id="d_plate" required placeholder="مثلاً 23الف123-12">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">تاریخ و ساعت حرکت</label>
+                    <input type="datetime-local" class="form-control" id="d_time" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">مکان حرکت</label>
+                    <input type="text" class="form-control" id="d_location" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">هزینه سفر (تومان)</label>
+                    <input type="number" class="form-control" id="d_price" required min="0" inputmode="numeric">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">مبدا</label>
+                    <input type="text" class="form-control" id="d_origin" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">مقصد</label>
+                    <input type="text" class="form-control" id="d_destination" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">شماره تماس</label>
+                    <input type="text" class="form-control" id="d_phone" placeholder="مثلاً 09123456789" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">ثبت اطلاعات راننده</button>
+            </form>
+
+            <!-- Passenger Form -->
+            <form id="passengerForm" class="form-section">
+                <h5 class="text-center mb-3 text-primary">فرم مخصوص مسافران</h5>
+                <div class="mb-2">
+                    <label class="form-label">نام و نام خانوادگی</label>
+                    <input type="text" class="form-control" id="p_name" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">شماره تماس</label>
+                    <input type="text" class="form-control" id="p_phone" placeholder="مثلاً 09121234567" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">تاریخ و ساعت درخواست سفر</label>
+                    <input type="datetime-local" class="form-control" id="p_time" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">مبدا</label>
+                    <input type="text" class="form-control" id="p_origin" required>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">مقصد</label>
+                    <input type="text" class="form-control" id="p_destination" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">ثبت درخواست مسافر</button>
+            </form>
+        </div>
+
+        <!-- Half-Split Table for Drivers & Passengers -->
+        <div class="table-section">
+            <div class="card shadow-sm mb-1">
+                <div class="card-header p-0" style="background:#eee;">
+                    <div class="row g-0 text-center">
+                        <div class="col-12 col-xl-6 border-bottom border-xl-bottom-0 p-2" style="border-left:2px solid #b6dbef;">
+                            <strong>جدول رانندگان</strong>
+                        </div>
+                        <div class="col-12 col-xl-6 p-2">
+                            <strong>جدول مسافران</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-2">
+                    <div class="split-table-row">
+                        <!-- Driver Table -->
+                        <div class="split-table-col" style="border-left:1px solid #b6dbef;">
+                            <div class="table-responsive">
+                                <table class="table table-sm table-hover table-striped align-middle mb-0 text-center">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>نام راننده</th>
+                                            <th>پلاک</th>
+                                            <th>زمان حرکت</th>
+                                            <th>مکان حرکت</th>
+                                            <th>هزینه</th>
+                                            <th>مبدا</th>
+                                            <th>مقصد</th>
+                                            <th>تلفن</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="driversTableBodySplit">
+                                        <!-- رانندگان در اینجا نمایش داده می‌شوند -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Passenger Table -->
+                        <div class="split-table-col">
+                            <div class="table-responsive">
+                                <table class="table table-sm table-hover table-striped align-middle mb-0 text-center">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>نام مسافر</th>
+                                            <th>تلفن</th>
+                                            <th>زمان درخواست</th>
+                                            <th>مبدا</th>
+                                            <th>مقصد</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="passengersTableBodySplit">
+                                        <!-- مسافران در اینجا نمایش داده می‌شوند -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="text-center mt-3 mb-2 text-dark" style="font-size:.95rem;">
+        <img src="https://cdn.sarapic.net/taxi-illustration.ir.png" alt="تاکسی" width="36" style="vertical-align:middle;">
+        <span class="ms-2">کلیه حقوق برای سامانه تاکسی‌رانی محفوظ است.</span>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+        // Section Switch Logic
+        const driverBtn = document.getElementById("driverBtn");
+        const passengerBtn = document.getElementById("passengerBtn");
+        const driverForm = document.getElementById("driverForm");
+        const passengerForm = document.getElementById("passengerForm");
+
+        driverBtn.addEventListener("click", function() {
+            driverBtn.classList.add("btn-primary");
+            driverBtn.classList.remove("btn-outline-primary");
+            passengerBtn.classList.remove("btn-primary");
+            passengerBtn.classList.add("btn-outline-primary");
+            driverForm.classList.add("active");
+            passengerForm.classList.remove("active");
+        });
+
+        passengerBtn.addEventListener("click", function() {
+            passengerBtn.classList.add("btn-primary");
+            passengerBtn.classList.remove("btn-outline-primary");
+            driverBtn.classList.remove("btn-primary");
+            driverBtn.classList.add("btn-outline-primary");
+            passengerForm.classList.add("active");
+            driverForm.classList.remove("active");
+        });
+
+        // LocalStorage Key Names
+        const DRIVERS_KEY = "taxi_drivers_list_v2";
+        const PASSENGERS_KEY = "taxi_passengers_list_v2";
+
+        // Load and Save helpers
+        function loadDrivers() {
+            return JSON.parse(localStorage.getItem(DRIVERS_KEY) || "[]");
+        }
+        function saveDrivers(list) {
+            localStorage.setItem(DRIVERS_KEY, JSON.stringify(list));
+        }
+        function loadPassengers() {
+            return JSON.parse(localStorage.getItem(PASSENGERS_KEY) || "[]");
+        }
+        function savePassengers(list) {
+            localStorage.setItem(PASSENGERS_KEY, JSON.stringify(list));
+        }
+
+        // Render Driver Split Table
+        function renderDriversTableSplit() {
+            const tbody = document.getElementById("driversTableBodySplit");
+            let drivers = loadDrivers();
+            drivers.sort((a,b) => (a.time || "").localeCompare(b.time || ""));
+            tbody.innerHTML = "";
+            drivers.forEach((item, idx) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <th scope="row">${idx+1}</th>
+                    <td>${item.name || ''}</td>
+                    <td dir="ltr" style="font-family:monospace">${item.plate || ''}</td>
+                    <td dir="ltr" style="font-family:monospace">${item.time ? new Date(item.time).toLocaleString('fa-IR',{hour:'2-digit',minute:'2-digit', year:'numeric', month:'2-digit', day:'2-digit'}) : ''}</td>
+                    <td>${item.location || ''}</td>
+                    <td>${item.price ? Number(item.price).toLocaleString("fa-IR") : ""}</td>
+                    <td>${item.origin || ''}</td>
+                    <td>${item.destination || ''}</td>
+                    <td dir="ltr" style="font-family:monospace">${item.phone || ''}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        // Render Passenger Split Table
+        function renderPassengersTableSplit() {
+            const tbody = document.getElementById("passengersTableBodySplit");
+            let passengers = loadPassengers();
+            passengers.sort((a,b) => (a.time || "").localeCompare(b.time || ""));
+            tbody.innerHTML = "";
+            passengers.forEach((item, idx) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <th scope="row">${idx+1}</th>
+                    <td>${item.name || ''}</td>
+                    <td dir="ltr" style="font-family:monospace">${item.phone || ''}</td>
+                    <td dir="ltr" style="font-family:monospace">${item.time ? new Date(item.time).toLocaleString('fa-IR',{hour:'2-digit',minute:'2-digit', year:'numeric', month:'2-digit', day:'2-digit'}) : ''}</td>
+                    <td>${item.origin || ''}</td>
+                    <td>${item.destination || ''}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Initially render both tables
+        function renderSplitTables() {
+            renderDriversTableSplit();
+            renderPassengersTableSplit();
+        }
+
+        // Form submit handlers
+        driverForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("d_name").value.trim();
+            const plate = document.getElementById("d_plate").value.trim();
+            const time = document.getElementById("d_time").value;
+            const location = document.getElementById("d_location").value.trim();
+            const price = document.getElementById("d_price").value.trim();
+            const origin = document.getElementById("d_origin").value.trim();
+            const destination = document.getElementById("d_destination").value.trim();
+            const phone = document.getElementById("d_phone").value.trim();
+            if(!name || !plate || !time || !location || !price || !origin || !destination || !phone) return;
+            let drivers = loadDrivers();
+            drivers.push({ name, plate, time, location, price, origin, destination, phone });
+            saveDrivers(drivers);
+            renderDriversTableSplit();
+            driverForm.reset();
+        });
+
+        passengerForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("p_name").value.trim();
+            const phone = document.getElementById("p_phone").value.trim();
+            const time = document.getElementById("p_time").value;
+            const origin = document.getElementById("p_origin").value.trim();
+            const destination = document.getElementById("p_destination").value.trim();
+            if(!name || !phone || !time || !origin || !destination) return;
+            let passengers = loadPassengers();
+            passengers.push({ name, phone, time, origin, destination });
+            savePassengers(passengers);
+            renderPassengersTableSplit();
+            passengerForm.reset();
+        });
+
+        // Show tables on page load
+        window.addEventListener("DOMContentLoaded", renderSplitTables);
+
+    </script>
+</body>
+</html>

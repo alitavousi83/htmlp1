@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سایت تاکسیرانی و درخواست راننده</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.finca.ir/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6fb;
+            font-family: IRANSansWeb, Tahoma, sans-serif;
+        }
+        .navbar {
+            margin-bottom: 2rem;
+        }
+        .header-img {
+            max-width: 100%;
+            border-radius: 18px;
+            box-shadow: 0px 4px 21px #00000013;
+        }
+        .request-form {
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 18px;
+            box-shadow: 0px 8px 32px #00000014;
+            margin-top: -2rem;
+        }
+        @media (max-width: 768px) {
+            .request-form {
+                margin-top: 1rem;
+            }
+        }
+        .main-section {
+            margin-bottom: 2rem;
+        }
+        .features {
+            margin-top: 2rem;
+        }
+        .feature-icon {
+            width: 60px;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">تاکسی آنلاین</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="#">خانه</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">درباره ما</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">ثبت‌نام رانندگان</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">تماس با ما</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container main-section">
+    <div class="row align-items-center gy-4">
+        <div class="col-lg-6 col-12 text-center text-lg-end">
+            <img src="https://static.iranicard.ir/uploads/2021/07/taxi-service.jpg" alt="تاکسی آنلاین" class="header-img img-fluid">
+        </div>
+        <div class="col-lg-6 col-12">
+            <h1 class="fw-bold mb-3">سریع، امن و راحت<br>تاکسی خود را آنلاین رزرو کنید</h1>
+            <p class="mb-4">
+                تاکسی آنلاین بهترین انتخاب برای سفرهای شهری شما با رانندگان حرفه‌ای و پشتیبانی ۲۴ ساعته است.
+            </p>
+            <a href="#requestDriver" class="btn btn-primary btn-lg">درخواست تاکسی</a>
+            <a href="#driver-register" class="btn btn-outline-primary btn-lg me-2">ثبت‌نام راننده</a>
+        </div>
+    </div>
+</div>
+
+<div class="container request-form" id="requestDriver">
+    <h2 class="mb-5 text-center">درخواست تاکسی</h2>
+    <form>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="fromLocation" class="form-label">مبدا</label>
+                <input type="text" class="form-control" id="fromLocation" placeholder="مکان مبدا را وارد کنید">
+            </div>
+            <div class="col-md-4">
+                <label for="toLocation" class="form-label">مقصد</label>
+                <input type="text" class="form-control" id="toLocation" placeholder="مکان مقصد را وارد کنید">
+            </div>
+            <div class="col-md-4">
+                <label for="rideTime" class="form-label">زمان حرکت</label>
+                <input type="datetime-local" class="form-control" id="rideTime">
+            </div>
+        </div>
+        <div class="row g-3 mt-3">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-success btn-lg w-50">درخواست راننده</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container features text-center">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <img src="https://cdn.iranicard.ir/irancdn/images/safe.png" alt="امنیت" class="feature-icon">
+            <h5 class="mt-2 mb-1">امنیت بالا</h5>
+            <p>رانندگان تاییدشده با حداقل سوابق خلافی</p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <img src="https://cdn.beytoote.com/images/taxi1.jpg" alt="سرعت" class="feature-icon">
+            <h5 class="mt-2 mb-1">سرعت در خدمت‌رسانی</h5>
+            <p>پیدا کردن تاکسی فقط در چند دقیقه</p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <img src="https://cdn.snapp.ir/assets/images/driver-banner.png" alt="درآمد رانندگان" class="feature-icon">
+            <h5 class="mt-2 mb-1">درآمد عالی برای رانندگان</h5>
+            <p>به راحتی و در هر زمان کسب درآمد کنید</p>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5" id="driver-register">
+    <div class="row align-items-center gy-3">
+        <div class="col-md-7">
+            <h2>به خانواده رانندگان ما بپیوندید!</h2>
+            <p>
+                اگر خودرو شخصی دارید و به دنبال کار و درآمد بیشتر هستید، همین حالا به جمع رانندگان تاکسی آنلاین بپیوندید.
+            </p>
+            <ul>
+                <li>کار در زمان دلخواه</li>
+                <li>تسویه روزانه و پرداخت منظم</li>
+                <li>پشتیبانی و آموزش رایگان</li>
+            </ul>
+            <a href="#driverForm" class="btn btn-warning btn-lg mt-3">ثبت‌نام راننده</a>
+        </div>
+        <div class="col-md-5 text-center">
+            <img src="https://cdn.snapp.ir/assets/images/driver.c1921dd.7fd190e.png" alt="اپلیکیشن رانندگان" class="header-img img-fluid">
+        </div>
+    </div>
+</div>
+
+<div class="container request-form mb-5" id="driverForm">
+    <h2 class="mb-4 text-center">فرم ثبت‌نام راننده</h2>
+    <form>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="driverName" class="form-label">نام و نام خانوادگی</label>
+                <input type="text" class="form-control" id="driverName" placeholder="مثال: علی رضایی">
+            </div>
+            <div class="col-md-4">
+                <label for="carModel" class="form-label">نوع و مدل خودرو</label>
+                <input type="text" class="form-control" id="carModel" placeholder="مثال: پژو ۴۰۵">
+            </div>
+            <div class="col-md-4">
+                <label for="phoneNumber" class="form-label">شماره تماس</label>
+                <input type="tel" class="form-control" id="phoneNumber" placeholder="09123456789">
+            </div>
+        </div>
+        <div class="row g-3 mt-3">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary btn-lg w-50">ارسال فرم</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer class="bg-light py-4 mt-auto text-center">
+    <div class="container">
+        <p class="mb-0">&copy; ۱۴۰۳ تاکسی آنلاین - طراحی شده توسط Cursor AI</p>
+    </div>
+</footer>
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.finca.ir/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>

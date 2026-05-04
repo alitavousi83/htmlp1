@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سامانه تاکسی‌رانی</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap RTL CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #e3f2fd;
+            font-family: Tahoma, Arial, sans-serif;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #1976D2;
+        }
+        .navbar-brand {
+            color: #fff !important;
+            font-size: 1.45rem;
+            font-weight: bold;
+        }
+        .header-img {
+            width: 42px;
+            height: 42px;
+            margin-left: 12px;
+            border-radius: 8px;
+            background: #fff;
+            padding: 4px;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.13);
+        }
+        .main-card {
+            margin-top: 30px;
+            color: #353535;
+        }
+        .timetable-card h5 {
+            color: #0d47a1;
+            font-weight: bold;
+        }
+        .footer {
+            background: none;
+            font-size: .97rem;
+            color: #21596f;
+            margin-top: 56px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header + Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="https://cdn.mftplus.ir/img/taxi1.png" alt="لوگوی تاکسی‌رانی" class="header-img" loading="lazy">
+                <span class="navbar-brand">سامانه تاکسی‌رانی</span>
+            </div>
+        </div>
+    </nav>
+    <!-- Registration / Scheduling Section -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-9 col-md-10 col-12">
+                <div class="card main-card p-4 shadow-sm">
+                    <h3 class="mb-3 text-center" style="color:#1976D2;">ثبت زمان حرکت راننده</h3>
+                    <form id="tripForm" class="row gy-2 justify-content-center align-items-center">
+                        <div class="col-sm-5 col-12">
+                            <input type="text" class="form-control" id="driverName" placeholder="نام راننده" required>
+                        </div>
+                        <div class="col-sm-5 col-12">
+                            <input type="time" class="form-control" id="startTime" required>
+                        </div>
+                        <div class="col-sm-2 col-12 d-grid">
+                            <button type="submit" class="btn btn-primary">ثبت حرکت</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Timetable Section -->
+                <div class="card timetable-card mt-4 shadow-sm p-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="https://www.iraneconomist.com/files/fa/news/1397/1/26/185781_795.jpg" alt="تاکسی" width="45" height="30" style="border-radius:8px; margin-left:10px;">
+                        <h5 class="mb-0">جدول زمان‌بندی حرکت رانندگان</h5>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover mt-2 mb-0 text-center">
+                            <thead style="background:#b2e9fa;">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">نام راننده</th>
+                                    <th scope="col">زمان حرکت</th>
+                                </tr>
+                            </thead>
+                            <tbody id="driversTable">
+                                <!-- رانندگان در اینجا نمایش داده می‌شوند -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- End Timetable Section -->
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer text-center mt-5 mb-3">
+        <img src="https://cdn.sarapic.net/taxi-illustration.ir.png" alt="آیکون تاکسی" width="36" style="vertical-align:middle;">
+        <span>کلیه حقوق برای سامانه تاکسی‌رانی محفوظ است.</span>
+    </footer>
+    <!-- Scripts -->
+    <script>
+        // اعمال localStorage برای ذخیره و بازیابی رانندگان
+        function getDrivers() {
+            return JSON.parse(localStorage.getItem('drivers') || "[]");
+        }
+        function setDrivers(drivers) {
+            localStorage.setItem('drivers', JSON.stringify(drivers));
+        }
+        function showTable() {
+            const tbody = document.getElementById("driversTable");
+            const drivers = getDrivers();
+            tbody.innerHTML = "";
+            drivers.forEach((item, idx) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `<th scope="row">${idx + 1}</th>
+                                <td>${item.name}</td>
+                                <td dir="ltr" style="font-family:monospace">${item.time}</td>`;
+                tbody.appendChild(tr);
+            });
+        }
+        document.getElementById("tripForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("driverName").value.trim();
+            const time = document.getElementById("startTime").value;
+            if (!name || !time) return;
+            const drivers = getDrivers();
+            drivers.push({name, time});
+            setDrivers(drivers);
+            showTable();
+            this.reset();
+        });
+        // نمایش اولیه جدول در بارگذاری صفحه
+        window.addEventListener("DOMContentLoaded", showTable);
+    </script>
+</body>
+</html>
