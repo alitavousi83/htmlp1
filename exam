@@ -1,0 +1,98 @@
+با استفاده از یکی از حلقه‌های for یا while مجموع اعداد 1 تا 200 که به 4 بخش‌پذیر هستن رو بدست بیار و مقدار نهایی رو در متغیری به نام result بریز و در نهایت مقدار این متغیر رو در خروجی نمایش بده.
+let result = 0;
+for (let i = 1; i <= 200; i++) {
+  if (i % 4 === 0) {
+    result += i;
+  }
+}
+console.log(result);
+
+
+
+
+
+
+
+
+تعدادی عدد داخل آرایه‌ای به نام 
+numbers 
+ذخیره شده.
+ با پیمایش روی این آرایه، تعداد اعداد مثبت رو بدست بیار و در خروجی نمایش بده. 
+
+یادت باشه حتما باید با استفاده از یکی از حلقه‌ها روی آرایه پیمایش انجام بدی.
+
+
+const numbers = [
+  5, 0, -3, 10,
+  -2, -12, 3, 4,
+  7, 6, -20, 1, 6, 
+  23, -43, 1, 2  
+];
+
+let positiveCount = 0;
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] > 0) {
+    positiveCount++;
+  }
+}
+
+console.log("تعداد اعداد مثبت:", positiveCount);
+
+
+
+
+
+
+
+
+
+با استفاده از تابع prompt از کاربر نام و نام خانوادگیش رو بگیر و هر کدوم رو به ترتیب در متغیر‌های firstName و lastName ذخیره کن. 
+
+اگر کاربر نام reza و نام خانوادگی hoseini رو وارد کرد، باید عبارت welcome reza hoseini در متغیری به نام result خیره بشه.
+
+
+let firstName = prompt("نام خود را وارد کنید:");
+let lastName = prompt("نام خانوادگی خود را وارد کنید:");
+let result;
+
+if (firstName === "reza" && lastName === "hoseini") {
+  result = "welcome reza hoseini";
+}
+
+
+
+با استفاده از تابع prompt نام کاربر رو ازش بگیر و در متغیر userInput قرار بده. در ادامه تعداد کاراکتر‌های نام کاربر رو در متغیری به نام inputLength قرار بده. در نهایت مقدار inputLength رو در خروجی نمایش بده.
+
+let userInput = prompt("نام خود را وارد کنید:");
+let inputLength = userInput.length;
+console.log(inputLength);
+
+
+
+
+
+
+
+
+
+
+دو تا ورودی از کاربر بگیر و نوعشون رو از رشته به عدد تغییر بده و در متغیر‌های num1 و num2 ذخیره کن. در ادامه حاصل ضرب این دوتا عدد رو حساب کن. اگر حاصل ضربشون منفی شد، رشته "negative"، اگر صفر شد رشته "zero" و در غیر این صورت رشته "positive" رو در متغیر result خیره کن.
+
+let input1 = prompt("عدد اول را وارد کنید:");
+let input2 = prompt("عدد دوم را وارد کنید:");
+
+let num1 = Number(input1);
+let num2 = Number(input2);
+
+let product = num1 * num2;
+let result;
+
+if (product < 0) {
+  result = "negative";
+} else if (product === 0) {
+  result = "zero";
+} else {
+  result = "positive";
+}
+
